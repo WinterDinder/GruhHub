@@ -1,0 +1,4068 @@
+if game.PlaceId == 885450884 then
+    local a = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+    local b = a.CreateLib("Grub Hub", "Midnight")
+    local c = b:NewTab("Home")
+    local d = b:NewTab("Weapons")
+    local e = b:NewTab("LocalPlayer")
+    local f = b:NewTab("Animations")
+    local g = b:NewTab("Misc")
+    local h = b:NewTab("Autofarm")
+    local i = b:NewTab("Shop")
+    local j = b:NewTab("Teleport")
+    local k = b:NewTab("Team")
+    local l = b:NewTab("Settings")
+    local m = c:NewSection("Credits")
+    local n = c:NewSection("Server")
+    local o = d:NewSection("Free Weapons")
+    local p = d:NewSection("Gun Mods")
+    local q = d:NewSection("shootTypes")
+    local r = d:NewSection("Grenade Gun")
+    local s = d:NewSection("Extra")
+    local t = d:NewSection("Throw Grenades")
+    local u = e:NewSection("Local Player")
+    local v = e:NewSection("Extra")
+    local w = f:NewSection("InGame Animations")
+    local x = f:NewSection("Stop Dancing")
+    local y = g:NewSection("Random Stuff")
+    local z = h:NewSection("Autofarms")
+    local A = h:NewSection("Get Money")
+    local B = i:NewSection("Buy All")
+    local C = i:NewSection("Citizen Shop")
+    local D = i:NewSection("Advanced Citizen Shop")
+    local E = i:NewSection("Rebel shop")
+    local F = i:NewSection("TNI Shop")
+    local G = i:NewSection("Other TNI Shop")
+    local H = i:NewSection("Black Knight Shop")
+    local I = i:NewSection("Other Black Knight Shop")
+    local J = i:NewSection("Lonely guns")
+    local K = j:NewSection("Teleports")
+    local L = k:NewSection("Normal Teams")
+    local M = k:NewSection("Gamepass Teams")
+    local N = l:NewSection("Settings")
+    local O = l:NewSection("Settings")
+    local P = game:GetService("VirtualUser")
+    game:GetService("Players").LocalPlayer.Idled:connect(
+        function()
+            P:Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+            wait(1)
+            P:Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+        end
+    )
+    local Q = game:GetService("Players").LocalPlayer
+    m:NewButton(
+        "Copy discord user",
+        "Copy discord user",
+        function()
+            setclipboard("Spaceman#0009")
+        end
+    )
+    m:NewButton(
+        "Copy discord invite link",
+        "Copy discord invite link",
+        function()
+            setclipboard("https://discord.gg/WukXpRkEqR")
+        end
+    )
+    n:NewButton(
+        "Rejoin Server",
+        "Rejoin current server",
+        function()
+            local R = game:GetService("TeleportService")
+            local S = game:GetService("Players")
+            local T = S.LocalPlayer
+            local U =
+                coroutine.create(
+                function()
+                    local V, W =
+                        pcall(
+                        function()
+                            R:Teleport(game.PlaceId, T)
+                        end
+                    )
+                    if not V then
+                        warn(W)
+                    end
+                end
+            )
+            coroutine.resume(U)
+        end
+    )
+    o:NewButton(
+        "Get All Guns",
+        "Gets all the free guns.",
+        function()
+            local X = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+            for Y, Z in pairs(game:GetService("Workspace").Systems.Legacy.Pickups.Debris:GetDescendants()) do
+                if Z.Name == "ClickBox" then
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Z.CFrame
+                    wait(.1)
+                    fireclickdetector(Z.ClickDetector)
+                    wait(.1)
+                end
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = X
+        end
+    )
+    p:NewButton(
+        "INF ammo",
+        "Big ammo.",
+        function()
+            for Y, Z in next, getgc(true) do
+                if type(Z) == "table" and rawget(Z, "damage") then
+                    Z.ammo = math.huge
+                end
+            end
+        end
+    )
+    p:NewButton(
+        "No bullet spread",
+        "Bullets have no spread.",
+        function()
+            for Y, Z in next, getgc(true) do
+                if type(Z) == "table" and rawget(Z, "damage") then
+                    Z.spread = 0
+                end
+            end
+        end
+    )
+    p:NewButton(
+        "Bullet range",
+        "Shoot bullets further.",
+        function()
+            for Y, Z in next, getgc(true) do
+                if type(Z) == "table" and rawget(Z, "damage") then
+                    Z.range = 10000
+                end
+            end
+        end
+    )
+    p:NewButton(
+        "Instant reload",
+        "No reload time.",
+        function()
+            for Y, Z in next, getgc(true) do
+                if type(Z) == "table" and rawget(Z, "damage") then
+                    Z.reloadTime = 0
+                end
+            end
+        end
+    )
+    p:NewButton(
+        "FireRate",
+        "Shoot fast as fuck.",
+        function()
+            for Y, Z in next, getgc(true) do
+                if type(Z) == "table" and rawget(Z, "damage") then
+                    Z.fireRate = 0
+                end
+            end
+        end
+    )
+    q:NewButton(
+        "Auto",
+        ".",
+        function()
+            for Y, Z in next, getgc(true) do
+                if type(Z) == "table" and rawget(Z, "damage") then
+                    Z.shootType = "Auto"
+                end
+            end
+        end
+    )
+    q:NewButton(
+        "Burst",
+        ".",
+        function()
+            for Y, Z in next, getgc(true) do
+                if type(Z) == "table" and rawget(Z, "damage") then
+                    Z.shootType = "Burst"
+                end
+            end
+        end
+    )
+    q:NewButton(
+        "Semi",
+        ".",
+        function()
+            for Y, Z in next, getgc(true) do
+                if type(Z) == "table" and rawget(Z, "damage") then
+                    Z.shootType = "Semi"
+                end
+            end
+        end
+    )
+    q:NewButton(
+        "Shotgun",
+        ".",
+        function()
+            for Y, Z in next, getgc(true) do
+                if type(Z) == "table" and rawget(Z, "damage") then
+                    Z.shootType = "Shotgun"
+                end
+            end
+        end
+    )
+    q:NewButton(
+        "AutoShotgun",
+        ".",
+        function()
+            for Y, Z in next, getgc(true) do
+                if type(Z) == "table" and rawget(Z, "damage") then
+                    Z.shootType = "AutoShotgun"
+                end
+            end
+        end
+    )
+    r:NewButton(
+        "Shadonade",
+        "Shoot shadonades.",
+        function()
+            for Y, Z in next, getgc(true) do
+                if type(Z) == "table" and rawget(Z, "damage") then
+                    Z.bulletType = "Shadonade"
+                end
+            end
+        end
+    )
+    r:NewButton(
+        "TearGasNade",
+        "Shoot TearGasNades.",
+        function()
+            for Y, Z in next, getgc(true) do
+                if type(Z) == "table" and rawget(Z, "damage") then
+                    Z.bulletType = "TearGasNade"
+                end
+            end
+        end
+    )
+    r:NewButton(
+        "Medinade",
+        "Shoot medinades.",
+        function()
+            for Y, Z in next, getgc(true) do
+                if type(Z) == "table" and rawget(Z, "damage") then
+                    Z.bulletType = "Medinade"
+                end
+            end
+        end
+    )
+    r:NewButton(
+        "Explodinade",
+        "Shoot explodinades.",
+        function()
+            for Y, Z in next, getgc(true) do
+                if type(Z) == "table" and rawget(Z, "damage") then
+                    Z.bulletType = "Explodinade"
+                end
+            end
+        end
+    )
+    r:NewButton(
+        "AimLock",
+        "Changes bullets to AimLock.",
+        function()
+            for Y, Z in next, getgc(true) do
+                if type(Z) == "table" and rawget(Z, "damage") then
+                    Z.bulletType = "AimLock"
+                end
+            end
+        end
+    )
+    r:NewButton(
+        "Normal Bullets",
+        "Change back to normal bullets.",
+        function()
+            for Y, Z in next, getgc(true) do
+                if type(Z) == "table" and rawget(Z, "damage") then
+                    Z.bulletType = "Raycast"
+                end
+            end
+        end
+    )
+    s:NewButton(
+        "Make gun invisible",
+        "Makes gun invisible.",
+        function()
+            for Y, Z in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+                if Z:IsA("Tool") then
+                    for Y, _ in pairs(Z:GetDescendants()) do
+                        if _:IsA("MeshPart") then
+                            if _.Name ~= "DamagePart" and _.Name ~= "Handle" then
+                                _:Destroy()
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    )
+    t:NewButton(
+        "Throw medinade",
+        "Throw big boom poof.",
+        function()
+            local a0 = Vector3.new(0, 10000, 0)
+            local a1 = "Medinade"
+            local a2 = 100000000000
+            local a3 = game:GetService("ReplicatedStorage").Modules.Grenades.Remotes.ThrowGrenade
+            a3:FireServer(a0, a1, a2)
+        end
+    )
+    t:NewButton(
+        "Throw explodinade",
+        "Throw big boom poof.",
+        function()
+            local a0 = Vector3.new(0, 10000, 0)
+            local a1 = "Explodinade"
+            local a2 = 100000000000
+            local a3 = game:GetService("ReplicatedStorage").Modules.Grenades.Remotes.ThrowGrenade
+            a3:FireServer(a0, a1, a2)
+        end
+    )
+    t:NewButton(
+        "Throw gasnade",
+        "Throw big boom poof.",
+        function()
+            local a0 = Vector3.new(0, 10000, 0)
+            local a1 = "Tear Gas Nade"
+            local a2 = 100000000000
+            local a3 = game:GetService("ReplicatedStorage").Modules.Grenades.Remotes.ThrowGrenade
+            a3:FireServer(a0, a1, a2)
+        end
+    )
+    t:NewButton(
+        "Throw shadonade",
+        "Throw big boom poof.",
+        function()
+            local a0 = Vector3.new(0, 10000, 0)
+            local a1 = "Shadonade"
+            local a2 = 100000000000
+            local a3 = game:GetService("ReplicatedStorage").Modules.Grenades.Remotes.ThrowGrenade
+            a3:FireServer(a0, a1, a2)
+        end
+    )
+    t:NewButton(
+        "Throw all grenades",
+        "Throw big boom poof.",
+        function()
+            local a0 = Vector3.new(0, 10000, 0)
+            local a1 = "Medinade"
+            local a2 = 100000000000
+            local a3 = game:GetService("ReplicatedStorage").Modules.Grenades.Remotes.ThrowGrenade
+            a3:FireServer(a0, a1, a2)
+            wait(.1)
+            local a0 = Vector3.new(0, 10000, 0)
+            local a1 = "Explodinade"
+            local a2 = 100000000000
+            local a3 = game:GetService("ReplicatedStorage").Modules.Grenades.Remotes.ThrowGrenade
+            a3:FireServer(a0, a1, a2)
+            wait(.1)
+            local a0 = Vector3.new(0, 10000, 0)
+            local a1 = "Tear Gas Nade"
+            local a2 = 100000000000
+            local a3 = game:GetService("ReplicatedStorage").Modules.Grenades.Remotes.ThrowGrenade
+            a3:FireServer(a0, a1, a2)
+            wait(.1)
+            local a0 = Vector3.new(0, 10000, 0)
+            local a1 = "Shadonade"
+            local a2 = 100000000000
+            local a3 = game:GetService("ReplicatedStorage").Modules.Grenades.Remotes.ThrowGrenade
+            a3:FireServer(a0, a1, a2)
+        end
+    )
+    u:NewSlider(
+        "Change Speed",
+        "Will change your WalkSpeed.",
+        500,
+        16,
+        function(a4)
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = a4
+        end
+    )
+    u:NewSlider(
+        "Change Jump",
+        "Will change your JumpPwer.",
+        500,
+        50,
+        function(a4)
+            game.Players.LocalPlayer.Character.Humanoid.JumpPower = a4
+        end
+    )
+    u:NewTextBox(
+        "TP to Player",
+        "Write name correctly or no TP",
+        function(a5)
+            local a6 = a5
+            local a7 = game.Players.LocalPlayer.Character
+            local a8 = game.Workspace:FindFirstChild(a6)
+            a7.HumanoidRootPart.CFrame = a8.HumanoidRootPart.CFrame * CFrame.new(0, 2, 0)
+        end
+    )
+    u:NewTextBox(
+        "Get player inventory",
+        "Write name correctly or no INV",
+        function(a5)
+            local a9 = a5
+            local a7 = game.Players.LocalPlayer
+            local a8 = game.Players:FindFirstChild(a9)
+            for Y, Z in pairs(a8.Backpack:GetChildren()) do
+                local aa = Z:Clone()
+                aa.Parent = game.Players.LocalPlayer.Backpack
+            end
+        end
+    )
+    u:NewButton(
+        "Force Reset",
+        "Will reset your character.",
+        function()
+            game.Players.LocalPlayer.Character.Humanoid.RigType = "R6"
+        end
+    )
+    u:NewButton(
+        "No Max Zoom",
+        "You can look further away.",
+        function()
+            game.Players.LocalPlayer.CameraMaxZoomDistance = 100000
+        end
+    )
+    u:NewButton(
+        "Become invisible 15 seconds",
+        "Become invisible for 15 seconds.",
+        function()
+            local a0 = "start"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.InvisibleCloak.Event
+            a3:FireServer(a0)
+        end
+    )
+    u:NewButton(
+        "Roll",
+        "Start rolling.",
+        function()
+            for Y, Z in next, getgc(true) do
+                if type(Z) == "table" and rawget(Z, "damage") then
+                    Z.roll = "true"
+                end
+            end
+        end
+    )
+    u:NewButton(
+        "No roll cooldown",
+        "No roll cooldown.",
+        function()
+            for Y, Z in next, getgc(true) do
+                if type(Z) == "table" and rawget(Z, "damage") then
+                    Z.rollCooldown = "0"
+                end
+            end
+        end
+    )
+    u:NewButton(
+        "Become zombie",
+        "zombhes.",
+        function()
+            local X = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+            firetouchinterest(
+                game.Players.LocalPlayer.Character.HumanoidRootPart,
+                game:GetService("Workspace").Systems.Legacy.Pods.Pod2.Center,
+                0
+            )
+            wait(.3)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = X
+        end
+    )
+    u:NewButton(
+        "No restricted areas",
+        "removes restricted areas.",
+        function()
+            for Y, Z in pairs(game:GetService("Workspace").Systems.Legacy.TPBarriers:GetDescendants()) do
+                if Z.Name == "PreventionPart" then
+                    Z:Destroy()
+                end
+            end
+        end
+    )
+    u:NewButton(
+        "Claim all apartments",
+        "claim all bby.",
+        function()
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["1"],
+                ["Type"] = "Apartment",
+                ["Name"] = "1",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["1"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["2"],
+                ["Type"] = "Apartment",
+                ["Name"] = "2",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["2"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["3"],
+                ["Type"] = "Apartment",
+                ["Name"] = "3",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["3"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["4"],
+                ["Type"] = "Apartment",
+                ["Name"] = "4",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["4"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["5"],
+                ["Type"] = "Apartment",
+                ["Name"] = "5",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["5"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["6"],
+                ["Type"] = "Apartment",
+                ["Name"] = "6",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["6"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["7"],
+                ["Type"] = "Apartment",
+                ["Name"] = "7",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["7"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["8"],
+                ["Type"] = "Apartment",
+                ["Name"] = "8",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["8"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["9"],
+                ["Type"] = "Apartment",
+                ["Name"] = "9",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["9"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["10"],
+                ["Type"] = "Apartment",
+                ["Name"] = "10",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["10"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["11"],
+                ["Type"] = "Apartment",
+                ["Name"] = "11",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["11"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["12"],
+                ["Type"] = "Apartment",
+                ["Name"] = "12",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["12"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["13"],
+                ["Type"] = "Apartment",
+                ["Name"] = "13",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["13"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["14"],
+                ["Type"] = "Apartment",
+                ["Name"] = "14",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["14"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["15"],
+                ["Type"] = "Apartment",
+                ["Name"] = "15",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["15"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["16"],
+                ["Type"] = "Apartment",
+                ["Name"] = "16",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["16"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["17"],
+                ["Type"] = "Apartment",
+                ["Name"] = "17",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["17"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["18"],
+                ["Type"] = "Apartment",
+                ["Name"] = "18",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["18"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["19"],
+                ["Type"] = "Apartment",
+                ["Name"] = "19",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["19"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["20"],
+                ["Type"] = "Apartment",
+                ["Name"] = "20",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["20"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["21"],
+                ["Type"] = "Apartment",
+                ["Name"] = "21",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["21"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["22"],
+                ["Type"] = "Apartment",
+                ["Name"] = "22",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["22"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["23"],
+                ["Type"] = "Apartment",
+                ["Name"] = "23",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["23"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["24"],
+                ["Type"] = "Apartment",
+                ["Name"] = "24",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["24"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["25"],
+                ["Type"] = "Apartment",
+                ["Name"] = "25",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["25"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["26"],
+                ["Type"] = "Apartment",
+                ["Name"] = "26",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["26"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["27"],
+                ["Type"] = "Apartment",
+                ["Name"] = "27",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["27"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["28"],
+                ["Type"] = "Apartment",
+                ["Name"] = "28",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["28"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["29"],
+                ["Type"] = "Apartment",
+                ["Name"] = "29",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["29"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["30"],
+                ["Type"] = "Apartment",
+                ["Name"] = "30",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["30"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["31"],
+                ["Type"] = "Apartment",
+                ["Name"] = "31",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["31"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["32"],
+                ["Type"] = "Apartment",
+                ["Name"] = "32",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["32"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["33"],
+                ["Type"] = "Apartment",
+                ["Name"] = "33",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["33"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["34"],
+                ["Type"] = "Apartment",
+                ["Name"] = "34",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["34"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["35"],
+                ["Type"] = "Apartment",
+                ["Name"] = "35",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["35"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["36"],
+                ["Type"] = "Apartment",
+                ["Name"] = "36",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["36"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["37"],
+                ["Type"] = "Apartment",
+                ["Name"] = "37",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["37"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["38"],
+                ["Type"] = "Apartment",
+                ["Name"] = "38",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["38"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["39"],
+                ["Type"] = "Apartment",
+                ["Name"] = "39",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["39"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+            wait(.1)
+            local a0 = {
+                ["Folder"] = game:GetService("Workspace").Systems.Apartments["40"],
+                ["Type"] = "Apartment",
+                ["Name"] = "40",
+                ["Streaming"] = true,
+                ["ProximityPrompt"] = game:GetService("Workspace").Systems.Apartments["40"].Building.Door.Door.ProximityPrompt
+            }
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.ApartmentsService.RF.ClaimApartment
+            a3:InvokeServer(a0)
+        end
+    )
+    v:NewButton(
+        "Open Both Border Gates",
+        "Opens Both Border Gates.",
+        function()
+            local ab = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(3127.464111328125, 300.0916442871094, -411.2536926269531)
+            wait(0.2)
+            fireclickdetector(
+                game:GetService("Workspace").Systems.Scanners.BorderScanner.Controls.SecondDoor.ClickDetector
+            )
+            fireclickdetector(
+                game:GetService("Workspace").Systems.Scanners.BorderScanner.Controls.FirstDoor.ClickDetector
+            )
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = ab
+        end
+    )
+    v:NewButton(
+        "Open second Border Gate",
+        "Opens Second Border Gate.",
+        function()
+            local ab = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(3127.464111328125, 300.0916442871094, -411.2536926269531)
+            wait(0.2)
+            fireclickdetector(
+                game:GetService("Workspace").Systems.Scanners.BorderScanner.Controls.SecondDoor.ClickDetector
+            )
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = ab
+        end
+    )
+    v:NewButton(
+        "Open first Border Gate",
+        "Opens First Border Gate.",
+        function()
+            local ab = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(3127.464111328125, 300.0916442871094, -411.2536926269531)
+            wait(0.2)
+            fireclickdetector(
+                game:GetService("Workspace").Systems.Scanners.BorderScanner.Controls.FirstDoor.ClickDetector
+            )
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = ab
+        end
+    )
+    v:NewButton(
+        "Get players inventory",
+        "Get all weapons etc from other players.",
+        function()
+            for Y, Z in pairs(game.Players:GetChildren()) do
+                for Y, Z in pairs(Z.Backpack:GetChildren()) do
+                    local aa = Z:Clone()
+                    aa.Parent = game.Players.LocalPlayer.Backpack
+                end
+            end
+        end
+    )
+    v:NewButton(
+        "Get players inventory",
+        "Get all weapons etc from other players.",
+        function()
+            if not _G.FullBrightExecuted then
+                _G.FullBrightEnabled = false
+                _G.NormalLightingSettings = {
+                    Brightness = game:GetService("Lighting").Brightness,
+                    ClockTime = game:GetService("Lighting").ClockTime,
+                    FogEnd = game:GetService("Lighting").FogEnd,
+                    GlobalShadows = game:GetService("Lighting").GlobalShadows,
+                    Ambient = game:GetService("Lighting").Ambient
+                }
+                game:GetService("Lighting"):GetPropertyChangedSignal("Brightness"):Connect(
+                    function()
+                        if
+                            game:GetService("Lighting").Brightness ~= 1 and
+                                game:GetService("Lighting").Brightness ~= _G.NormalLightingSettings.Brightness
+                         then
+                            _G.NormalLightingSettings.Brightness = game:GetService("Lighting").Brightness
+                            if not _G.FullBrightEnabled then
+                                repeat
+                                    wait()
+                                until _G.FullBrightEnabled
+                            end
+                            game:GetService("Lighting").Brightness = 1
+                        end
+                    end
+                )
+                game:GetService("Lighting"):GetPropertyChangedSignal("ClockTime"):Connect(
+                    function()
+                        if
+                            game:GetService("Lighting").ClockTime ~= 12 and
+                                game:GetService("Lighting").ClockTime ~= _G.NormalLightingSettings.ClockTime
+                         then
+                            _G.NormalLightingSettings.ClockTime = game:GetService("Lighting").ClockTime
+                            if not _G.FullBrightEnabled then
+                                repeat
+                                    wait()
+                                until _G.FullBrightEnabled
+                            end
+                            game:GetService("Lighting").ClockTime = 12
+                        end
+                    end
+                )
+                game:GetService("Lighting"):GetPropertyChangedSignal("FogEnd"):Connect(
+                    function()
+                        if
+                            game:GetService("Lighting").FogEnd ~= 786543 and
+                                game:GetService("Lighting").FogEnd ~= _G.NormalLightingSettings.FogEnd
+                         then
+                            _G.NormalLightingSettings.FogEnd = game:GetService("Lighting").FogEnd
+                            if not _G.FullBrightEnabled then
+                                repeat
+                                    wait()
+                                until _G.FullBrightEnabled
+                            end
+                            game:GetService("Lighting").FogEnd = 786543
+                        end
+                    end
+                )
+                game:GetService("Lighting"):GetPropertyChangedSignal("GlobalShadows"):Connect(
+                    function()
+                        if
+                            game:GetService("Lighting").GlobalShadows ~= false and
+                                game:GetService("Lighting").GlobalShadows ~= _G.NormalLightingSettings.GlobalShadows
+                         then
+                            _G.NormalLightingSettings.GlobalShadows = game:GetService("Lighting").GlobalShadows
+                            if not _G.FullBrightEnabled then
+                                repeat
+                                    wait()
+                                until _G.FullBrightEnabled
+                            end
+                            game:GetService("Lighting").GlobalShadows = false
+                        end
+                    end
+                )
+                game:GetService("Lighting"):GetPropertyChangedSignal("Ambient"):Connect(
+                    function()
+                        if
+                            game:GetService("Lighting").Ambient ~= Color3.fromRGB(178, 178, 178) and
+                                game:GetService("Lighting").Ambient ~= _G.NormalLightingSettings.Ambient
+                         then
+                            _G.NormalLightingSettings.Ambient = game:GetService("Lighting").Ambient
+                            if not _G.FullBrightEnabled then
+                                repeat
+                                    wait()
+                                until _G.FullBrightEnabled
+                            end
+                            game:GetService("Lighting").Ambient = Color3.fromRGB(178, 178, 178)
+                        end
+                    end
+                )
+                game:GetService("Lighting").Brightness = 1
+                game:GetService("Lighting").ClockTime = 12
+                game:GetService("Lighting").FogEnd = 786543
+                game:GetService("Lighting").GlobalShadows = false
+                game:GetService("Lighting").Ambient = Color3.fromRGB(178, 178, 178)
+                local ac = true
+                spawn(
+                    function()
+                        repeat
+                            wait()
+                        until _G.FullBrightEnabled
+                        while wait() do
+                            if _G.FullBrightEnabled ~= ac then
+                                if not _G.FullBrightEnabled then
+                                    game:GetService("Lighting").Brightness = _G.NormalLightingSettings.Brightness
+                                    game:GetService("Lighting").ClockTime = _G.NormalLightingSettings.ClockTime
+                                    game:GetService("Lighting").FogEnd = _G.NormalLightingSettings.FogEnd
+                                    game:GetService("Lighting").GlobalShadows = _G.NormalLightingSettings.GlobalShadows
+                                    game:GetService("Lighting").Ambient = _G.NormalLightingSettings.Ambient
+                                else
+                                    game:GetService("Lighting").Brightness = 1
+                                    game:GetService("Lighting").ClockTime = 12
+                                    game:GetService("Lighting").FogEnd = 786543
+                                    game:GetService("Lighting").GlobalShadows = false
+                                    game:GetService("Lighting").Ambient = Color3.fromRGB(178, 178, 178)
+                                end
+                                ac = not ac
+                            end
+                        end
+                    end
+                )
+            end
+            _G.FullBrightExecuted = true
+            _G.FullBrightEnabled = not _G.FullBrightEnabled
+        end
+    )
+    local ad = "rbxassetid://1966484612"
+    local ae = "rbxassetid://1966524617"
+    local af = "rbxassetid://1966712050"
+    local ag = "rbxassetid://2033735520"
+    local ah = "rbxassetid://2033739828"
+    local ai = "rbxassetid://2033733033"
+    local aj = "rbxassetid://2033720632"
+    local ak = "rbxassetid://2033722671"
+    local al = "rbxassetid://2033730916"
+    local am = "rbxassetid://2989976610"
+    local an = "rbxassetid://5159580126"
+    local ao = "rbxassetid://5099743348"
+    local ap = "rbxassetid://5100025417"
+    local aq = "rbxassetid://5100023845"
+    local ar = "rbxassetid://5100050453"
+    local q = "rbxassetid://5100028639"
+    local as = "rbxassetid://5099746164"
+    local at = "rbxassetid://5100022646"
+    local au = "rbxassetid://5100031853"
+    local av = "rbxassetid://5100052192"
+    local aw = "rbxassetid://5100027497"
+    local ax = "rbxassetid://5100030603"
+    local ay = "rbxassetid://5114784908"
+    local az = "rbxassetid://5114781904"
+    local aA = "rbxassetid://5114790534"
+    w:NewButton(
+        "Death",
+        "Just Dance",
+        function()
+            local aB = game.Players.LocalPlayer.Character.Humanoid
+            local aC = Instance.new("Animation")
+            aC.AnimationId = ad
+            local aD = aB:WaitForChild("Animator"):LoadAnimation(aC)
+            aD:Play()
+        end
+    )
+    w:NewButton(
+        "slap",
+        "Just Dance",
+        function()
+            local aB = game.Players.LocalPlayer.Character.Humanoid
+            local aC = Instance.new("Animation")
+            aC.AnimationId = ae
+            local aD = aB:WaitForChild("Animator"):LoadAnimation(aC)
+            aD:Play()
+        end
+    )
+    w:NewButton(
+        "L",
+        "Just Dance",
+        function()
+            local aB = game.Players.LocalPlayer.Character.Humanoid
+            local aC = Instance.new("Animation")
+            aC.AnimationId = af
+            local aD = aB:WaitForChild("Animator"):LoadAnimation(aC)
+            aD:Play()
+        end
+    )
+    w:NewButton(
+        "step",
+        "Just Dance",
+        function()
+            local aB = game.Players.LocalPlayer.Character.Humanoid
+            local aC = Instance.new("Animation")
+            aC.AnimationId = ag
+            local aD = aB:WaitForChild("Animator"):LoadAnimation(aC)
+            aD:Play()
+        end
+    )
+    w:NewButton(
+        "hip",
+        "Just Dance",
+        function()
+            local aB = game.Players.LocalPlayer.Character.Humanoid
+            local aC = Instance.new("Animation")
+            aC.AnimationId = ah
+            local aD = aB:WaitForChild("Animator"):LoadAnimation(aC)
+            aD:Play()
+        end
+    )
+    w:NewButton(
+        "macarena",
+        "Just Dance",
+        function()
+            local aB = game.Players.LocalPlayer.Character.Humanoid
+            local aC = Instance.new("Animation")
+            aC.AnimationId = ai
+            local aD = aB:WaitForChild("Animator"):LoadAnimation(aC)
+            aD:Play()
+        end
+    )
+    w:NewButton(
+        "belly",
+        "Just Dance",
+        function()
+            local aB = game.Players.LocalPlayer.Character.Humanoid
+            local aC = Instance.new("Animation")
+            aC.AnimationId = aj
+            local aD = aB:WaitForChild("Animator"):LoadAnimation(aC)
+            aD:Play()
+        end
+    )
+    w:NewButton(
+        "chicken",
+        "Just Dance",
+        function()
+            local aB = game.Players.LocalPlayer.Character.Humanoid
+            local aC = Instance.new("Animation")
+            aC.AnimationId = ak
+            local aD = aB:WaitForChild("Animator"):LoadAnimation(aC)
+            aD:Play()
+        end
+    )
+    w:NewButton(
+        "shopping",
+        "Just Dance",
+        function()
+            local aB = game.Players.LocalPlayer.Character.Humanoid
+            local aC = Instance.new("Animation")
+            aC.AnimationId = al
+            local aD = aB:WaitForChild("Animator"):LoadAnimation(aC)
+            aD:Play()
+        end
+    )
+    w:NewButton(
+        "dab",
+        "Just Dance",
+        function()
+            local aB = game.Players.LocalPlayer.Character.Humanoid
+            local aC = Instance.new("Animation")
+            aC.AnimationId = am
+            local aD = aB:WaitForChild("Animator"):LoadAnimation(aC)
+            aD:Play()
+        end
+    )
+    w:NewButton(
+        "crying",
+        "Just Dance",
+        function()
+            local aB = game.Players.LocalPlayer.Character.Humanoid
+            local aC = Instance.new("Animation")
+            aC.AnimationId = an
+            local aD = aB:WaitForChild("Animator"):LoadAnimation(aC)
+            aD:Play()
+        end
+    )
+    w:NewButton(
+        "carlton",
+        "Just Dance",
+        function()
+            local aB = game.Players.LocalPlayer.Character.Humanoid
+            local aC = Instance.new("Animation")
+            aC.AnimationId = ao
+            local aD = aB:WaitForChild("Animator"):LoadAnimation(aC)
+            aD:Play()
+        end
+    )
+    w:NewButton(
+        "ballet",
+        "Just Dance",
+        function()
+            local aB = game.Players.LocalPlayer.Character.Humanoid
+            local aC = Instance.new("Animation")
+            aC.AnimationId = ap
+            local aD = aB:WaitForChild("Animator"):LoadAnimation(aC)
+            aD:Play()
+        end
+    )
+    w:NewButton(
+        "kalinka",
+        "Just Dance",
+        function()
+            local aB = game.Players.LocalPlayer.Character.Humanoid
+            local aC = Instance.new("Animation")
+            aC.AnimationId = aq
+            local aD = aB:WaitForChild("Animator"):LoadAnimation(aC)
+            aD:Play()
+        end
+    )
+    w:NewButton(
+        "BringItDown",
+        "Just Dance",
+        function()
+            local aB = game.Players.LocalPlayer.Character.Humanoid
+            local aC = Instance.new("Animation")
+            aC.AnimationId = ar
+            local aD = aB:WaitForChild("Animator"):LoadAnimation(aC)
+            aD:Play()
+        end
+    )
+    w:NewButton(
+        "cartoon",
+        "Just Dance",
+        function()
+            local aB = game.Players.LocalPlayer.Character.Humanoid
+            local aC = Instance.new("Animation")
+            aC.AnimationId = q
+            local aD = aB:WaitForChild("Animator"):LoadAnimation(aC)
+            aD:Play()
+        end
+    )
+    w:NewButton(
+        "monkey",
+        "Just Dance",
+        function()
+            local aB = game.Players.LocalPlayer.Character.Humanoid
+            local aC = Instance.new("Animation")
+            aC.AnimationId = as
+            local aD = aB:WaitForChild("Animator"):LoadAnimation(aC)
+            aD:Play()
+        end
+    )
+    w:NewButton(
+        "LeanOn",
+        "Just Dance",
+        function()
+            local aB = game.Players.LocalPlayer.Character.Humanoid
+            local aC = Instance.new("Animation")
+            aC.AnimationId = at
+            local aD = aB:WaitForChild("Animator"):LoadAnimation(aC)
+            aD:Play()
+        end
+    )
+    w:NewButton(
+        "rick",
+        "Just Dance",
+        function()
+            local aB = game.Players.LocalPlayer.Character.Humanoid
+            local aC = Instance.new("Animation")
+            aC.AnimationId = au
+            local aD = aB:WaitForChild("Animator"):LoadAnimation(aC)
+            aD:Play()
+        end
+    )
+    w:NewButton(
+        "rodeo",
+        "Just Dance",
+        function()
+            local aB = game.Players.LocalPlayer.Character.Humanoid
+            local aC = Instance.new("Animation")
+            aC.AnimationId = av
+            local aD = aB:WaitForChild("Animator"):LoadAnimation(aC)
+            aD:Play()
+        end
+    )
+    w:NewButton(
+        "stomping",
+        "Just Dance",
+        function()
+            local aB = game.Players.LocalPlayer.Character.Humanoid
+            local aC = Instance.new("Animation")
+            aC.AnimationId = aw
+            local aD = aB:WaitForChild("Animator"):LoadAnimation(aC)
+            aD:Play()
+        end
+    )
+    w:NewButton(
+        "sweathardt",
+        "Just Dance",
+        function()
+            local aB = game.Players.LocalPlayer.Character.Humanoid
+            local aC = Instance.new("Animation")
+            aC.AnimationId = ax
+            local aD = aB:WaitForChild("Animator"):LoadAnimation(aC)
+            aD:Play()
+        end
+    )
+    w:NewButton(
+        "bow",
+        "Just Dance",
+        function()
+            local aB = game.Players.LocalPlayer.Character.Humanoid
+            local aC = Instance.new("Animation")
+            aC.AnimationId = ay
+            local aD = aB:WaitForChild("Animator"):LoadAnimation(aC)
+            aD:Play()
+        end
+    )
+    w:NewButton(
+        "handToHeart",
+        "Just Dance",
+        function()
+            local aB = game.Players.LocalPlayer.Character.Humanoid
+            local aC = Instance.new("Animation")
+            aC.AnimationId = az
+            local aD = aB:WaitForChild("Animator"):LoadAnimation(aC)
+            aD:Play()
+        end
+    )
+    w:NewButton(
+        "salute",
+        "Just Dance",
+        function()
+            local aB = game.Players.LocalPlayer.Character.Humanoid
+            local aC = Instance.new("Animation")
+            aC.AnimationId = aA
+            local aD = aB:WaitForChild("Animator"):LoadAnimation(aC)
+            aD:Play()
+        end
+    )
+    x:NewButton(
+        "Stop animations",
+        "Just Stop Dance",
+        function()
+            local aE = game.Players.LocalPlayer.Character.Humanoid
+            local aF = aE:GetPlayingAnimationTracks()
+            for aG, Z in pairs(aF) do
+                Z:Stop()
+            end
+        end
+    )
+    y:NewButton(
+        "Remove invisible barriers",
+        "Delete invis barriers.",
+        function()
+            game:GetService("Workspace").MapBorders:Destroy()
+        end
+    )
+    y:NewButton(
+        "Remove hack and c4 doors",
+        "Delete the doors.",
+        function()
+            for Y, Z in pairs(game:GetService("Workspace").Doors:GetChildren()) do
+                Z:Destroy()
+            end
+        end
+    )
+    y:NewButton(
+        "Sit down",
+        "Sit.",
+        function()
+            game.Players.LocalPlayer.Character.Humanoid.Sit = true
+        end
+    )
+    y:NewSlider(
+        "Change kills",
+        "Change cs kills.",
+        500,
+        0,
+        function(a4)
+            game:GetService("Players").LocalPlayer.leaderstats.Kills.Value = a4
+        end
+    )
+    z:NewToggle(
+        "Raid Reactor Spam",
+        "Spam raid the reactor.",
+        function(aH)
+            if aH then
+                getgenv(1).Toggle = true
+                while Toggle == true do
+                    local a0 = "Reactor"
+                    local a3 = game:GetService("ReplicatedStorage").Systems["Raid System"].Events.OnRaidStart
+                    a3:FireServer(a0)
+                    wait()
+                end
+            else
+                getgenv(1).Toggle = false
+            end
+        end
+    )
+    z:NewToggle(
+        "Fix Reactor Spam",
+        "Join nighthawk group to use",
+        function(aH)
+            if aH then
+                getgenv(1).Toggle = true
+                while Toggle == true do
+                    local a3 = game:GetService("ReplicatedStorage").Systems["Raid System"].Events.OnReactorFix
+                    a3:FireServer()
+                    wait()
+                end
+            else
+                getgenv(1).Toggle = false
+            end
+        end
+    )
+    z:NewToggle(
+        "Autofarm Vault",
+        "Autofarm the vault.",
+        function(aH)
+            if aH then
+                getgenv(2).Toggle = true
+                while Toggle == true do
+                    wait()
+                    game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                        CFrame.new(3927.763916015625, 279.0771179199219, -394.36639404296875)
+                    local a0 = "Vault"
+                    local a3 = game:GetService("ReplicatedStorage").Systems["Raid System"].Events.OnRaidStart
+                    a3:FireServer(a0)
+                    local a0 = "Vault"
+                    local a3 = game:GetService("ReplicatedStorage").Systems["Raid System"].Events.OnRaidInteract
+                    a3:FireServer(a0)
+                end
+            else
+                getgenv(2).Toggle = false
+            end
+        end
+    )
+    z:NewToggle(
+        "Autofarm Safe",
+        "Autofarm the Safe.",
+        function(aH)
+            if aH then
+                getgenv(3).Toggle = true
+                while Toggle == true do
+                    wait()
+                    game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                        CFrame.new(3430.31689453125, 464.59210205078125, -756.1715698242188)
+                    local a0 = "Safe"
+                    local a3 = game:GetService("ReplicatedStorage").Systems["Raid System"].Events.OnRaidStart
+                    a3:FireServer(a0)
+                    local a0 = "Safe"
+                    local a3 = game:GetService("ReplicatedStorage").Systems["Raid System"].Events.OnRaidInteract
+                    a3:FireServer(a0)
+                end
+            else
+                getgenv(3).Toggle = false
+            end
+        end
+    )
+    z:NewToggle(
+        "Honor Autofarm",
+        "I suggest using autoclicker to claim the honor.",
+        function(aH)
+            if aH then
+                getgenv(2).Toggle = true
+                while Toggle == true do
+                    wait()
+                    local aI = game.Players.LocalPlayer.Character.HumanoidRootPart
+                    for Y, Z in pairs(game.Players.LocalPlayer.PlayerGui.Missions.Main.MissionList:GetChildren()) do
+                        if Z:IsA "Frame" then
+                            if Z.Name == "Patrol Vault for 5 Minutes" then
+                                aI.CFrame = CFrame.new(1.0845682621002, 553.96350097656, -2252.1564941406)
+                                wait(315)
+                            elseif Z.Name == "Patrol Border Gate for 5 Minutes" then
+                                aI.CFrame = CFrame.new(-215.52420043945, 572.93487548828, -1901.7037353516)
+                                wait(315)
+                            elseif Z.Name == "Patrol Safe for 5 Minutes" then
+                                aI.CFrame = CFrame.new(-798.55194091797, 557.24066162109, -1666.0010986328)
+                                wait(315)
+                            end
+                        end
+                    end
+                end
+            else
+                getgenv(2).Toggle = false
+            end
+        end
+    )
+    A:NewToggle(
+        "Get vault money loop",
+        "Loops get vault money..",
+        function(aH)
+            if aH then
+                getgenv(3).Toggle = true
+                while Toggle == true do
+                    wait()
+                    local a0 = "Vault"
+                    local a3 = game:GetService("ReplicatedStorage").Systems["Raid System"].Events.OnRaidInteract
+                    a3:FireServer(a0)
+                end
+            else
+                getgenv(3).Toggle = false
+            end
+        end
+    )
+    A:NewToggle(
+        "Get safe money loop",
+        "Loops get vault money..",
+        function(aH)
+            if aH then
+                getgenv(3).Toggle = true
+                while Toggle == true do
+                    wait()
+                    local a0 = "Safe"
+                    local a3 = game:GetService("ReplicatedStorage").Systems["Raid System"].Events.OnRaidInteract
+                    a3:FireServer(a0)
+                end
+            else
+                getgenv(3).Toggle = false
+            end
+        end
+    )
+    A:NewButton(
+        "Get vault money",
+        "Gets vault money.",
+        function()
+            local a0 = "Vault"
+            local a3 = game:GetService("ReplicatedStorage").Systems["Raid System"].Events.OnRaidInteract
+            a3:FireServer(a0)
+        end
+    )
+    A:NewButton(
+        "Get safe money",
+        "Gets safe money.",
+        function()
+            local a0 = "Safe"
+            local a3 = game:GetService("ReplicatedStorage").Systems["Raid System"].Events.OnRaidInteract
+            a3:FireServer(a0)
+        end
+    )
+    B:NewButton(
+        "Buy all weapons",
+        "Buys all weapons",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "TNIShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "SPAS-55"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "CivShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "Time Bomb"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "TNIShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "Titan"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "RebelShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "ICR-3"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "MK-14"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "MZ-12"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "P90"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "Paladin"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "Revolver"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "USP-S"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "RebelShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "Medi-Gun"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "RebelShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "X9 Pistol"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "CivShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "Auger"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "RebelShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "C4"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "RebelShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "Hacking Device"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "TNIShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "L95-S"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "RebelShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "M16A4"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "CivShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "MAC-10"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "CivShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "MP-7"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "RebelShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "Red Sword"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "CivShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "SCAR-L"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    C:NewButton(
+        "Citizen shop",
+        "Buy all from citizen shop.",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "CivShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "Auger"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "CivShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "C4"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "CivShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "Hacking Device"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "CivShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "L95-S"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "CivShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "M16A4"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "CivShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "MAC-10"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "CivShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "MP-7"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "CivShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "Red Sword"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "CivShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "SCAR-L"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "CivShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "SPAS-55"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "CivShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "Time Bomb"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "CivShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "Titan"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    D:NewButton(
+        "Advanced citizen shop",
+        "Buy all from adv citizen shop.",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "ICR-3"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "Auger"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "M16A4"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "MAC-10"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "MK-14"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "MZ-12"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "P90"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "Paladin"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "Revolver"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "SPAS-55"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "Titan"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "USP-S"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    E:NewButton(
+        "Rebel shop",
+        "Buy all from rebel shop.",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "RebelShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "C4"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "RebelShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "Hacking Device"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "RebelShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "ICR-3"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "RebelShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "M16A4"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "RebelShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "MP-7"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "RebelShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "Medi-Gun"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "RebelShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "Red Sword"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "RebelShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "Titan"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "RebelShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "X9 Pistol"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    F:NewButton(
+        "TNI shop",
+        "Buy all from TNI1 shop.",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "TNIShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "Auger"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "TNIShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "L95-S"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "TNIShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "M16A4"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "TNIShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "MAC-10"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "TNIShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "MP-7"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "TNIShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "SCAR-L"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "TNIShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "SPAS-55"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "TNIShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "Titan"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "TNIShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "X9 Pistol"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    G:NewButton(
+        "Other TNI shop",
+        "Buy TNI2 shop.",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "Auger"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "ICR-3"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "M16A4"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "MAC-10"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "MK-14"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "MZ-12"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "P90"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "Paladin"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "Revolver"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "SPAS-55"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "Titan"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "USP-S"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    H:NewButton(
+        "DarkKnight shop",
+        "Buy DarkKnight shop.",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "Auger"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "ICR-3"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "M16A4"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "MAC-10"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "MK-14"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "MZ-12"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "P90"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "Paladin"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "Revolver"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "SPAS-55"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "Titan"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "USP-S"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    I:NewButton(
+        "Other DarkKnight shop",
+        "Buy DarkKnight shop.",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "TNIShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "Auger"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "TNIShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "L95-S"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "TNIShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "M16A4"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "TNIShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "MAC-10"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "TNIShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "MP-7"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "TNIShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "SCAR-L"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "TNIShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "SPAS-55"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "TNIShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "Titan"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+            local a0 = "BuyItem"
+            local a1 = "TNIShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "X9 Pistol"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    J:NewButton(
+        "Buy ICR-3-3",
+        "Buys a ICR-3.",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "RebelShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "ICR-3"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    J:NewButton(
+        "SCAR-L",
+        "Buys gun.",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "CivShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "SCAR-L"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    J:NewButton(
+        "Buy Paladin",
+        "Buys a paladin.",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "Paladin"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    J:NewButton(
+        "Buy Medi-Gun",
+        "Buys a medigun.",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "RebelShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "Medi-Gun"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    J:NewButton(
+        "Buy SPAS-55",
+        "Buys gun.",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "TNIShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "SPAS-55"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    J:NewButton(
+        "Buy Titan",
+        "Buys gun.",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "TNIShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "Titan"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    J:NewButton(
+        "MK-14",
+        "Buys gun.",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "MK-14"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    J:NewButton(
+        "MZ-12",
+        "Buys gun.",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "MZ-12"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    J:NewButton(
+        "P90",
+        "Buys gun.",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "P90"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    J:NewButton(
+        "Revolver",
+        "Buys gun.",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "Revolver"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    J:NewButton(
+        "USP-S",
+        "Buys gun.",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "AdvancedShop"
+            local a2 = "Items"
+            local aJ = "MK-14"
+            local aK = "USP-S"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    J:NewButton(
+        "Auger",
+        "Buys gun.",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "CivShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "Auger"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    J:NewButton(
+        "X9 Pistol",
+        "Buys gun.",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "RebelShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "X9 Pistol"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    J:NewButton(
+        "L95-S",
+        "Buys gun.",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "TNIShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "L95-S"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    J:NewButton(
+        "M16A4",
+        "Buys gun.",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "RebelShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "M16A4"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    J:NewButton(
+        "MAC-10",
+        "Buys gun.",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "CivShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "MAC-10"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    J:NewButton(
+        "MP-7",
+        "Buys gun.",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "CivShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "MP-7"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    J:NewButton(
+        "Red Sword",
+        "Buys gun.",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "RebelShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "Red Sword"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    J:NewButton(
+        "Hacking Device",
+        "Buys gun.",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "RebelShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "Hacking Device"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    J:NewButton(
+        "C4",
+        "Buys gun.",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "RebelShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "C4"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    J:NewButton(
+        "Time Bomb",
+        "Buys gun.",
+        function()
+            local a0 = "BuyItem"
+            local a1 = "CivShop"
+            local a2 = "Items"
+            local aJ = "M16A4"
+            local aK = "Time Bomb"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Shop
+            a3:InvokeServer(a0, a1, a2, aJ, aK)
+        end
+    )
+    K:NewButton(
+        "Reactor",
+        "Teleports you to the reactor.",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(4446.3359375, 303.926513671875, 337.1903076171875)
+        end
+    )
+    K:NewButton(
+        "Vault",
+        "Teleports you to vault.",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(3927.17578125, 279.0771179199219, -385.67596435546875)
+        end
+    )
+    K:NewButton(
+        "Safe",
+        "Teleports you to the safe.",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(3430.577880859375, 467.7024841308594, -756.8167114257812)
+        end
+    )
+    K:NewButton(
+        "Armory",
+        "Teleports you to Armory.",
+        function()
+            local aL = game:GetService("Workspace").Map.RaidAreas.Armory1.InvisLight.CFrame
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = aL
+        end
+    )
+    K:NewButton(
+        "Border",
+        "Teleports you to the border.",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(3255.35986328125, 306.7332763671875, -391.71014404296875)
+        end
+    )
+    K:NewButton(
+        "Elevator",
+        "Teleports you to the elevator.",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(3428.454345703125, 305.5410461425781, -370.7727966308594)
+        end
+    )
+    K:NewButton(
+        "Rebel Spawn",
+        "Teleports you to the Rebel Spawn.",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(4384.525390625, 270.3910217285156, -1056.610595703125)
+        end
+    )
+    K:NewButton(
+        "TNI Spawn",
+        "Teleports you to Nighthawk spawn.",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(3057.046142578125, 446.3461608886719, 476.2027587890625)
+        end
+    )
+    K:NewButton(
+        "Citizen Spawn",
+        "Teleports you to Citizen spawn.",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(2514.15869140625, 305.46844482421875, -589.2139892578125)
+        end
+    )
+    K:NewButton(
+        "Scientist Lab",
+        "Teleports you to scientist lab.",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(4217.84423828125, 306.7516174316406, -185.73558044433594)
+        end
+    )
+    K:NewButton(
+        "Main Gate",
+        "Teleports you to main gate.",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(3686.13916015625, 274.6371154785156, -963.2871704101562)
+        end
+    )
+    K:NewButton(
+        "Throne",
+        "Teleports you to the throne.",
+        function()
+            local aM = game:GetService("Workspace").Map.InteriorAreas.ThroneRoom.Props.Podium.Chair.Seat.CFrame
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = aM
+        end
+    )
+    L:NewButton(
+        "Swtich to TNI cadet",
+        "Swtich to cadet.",
+        function()
+            local a0 = "Nighthawk"
+            local a1 = "Cadet"
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.GameManagerService.RF.SpawnPlayer
+            a3:InvokeServer(a0, a1)
+        end
+    )
+    L:NewButton(
+        "Switch to rebel",
+        "Switch to rebel.",
+        function()
+            local a0 = "Rebels"
+            local a1 = "Follower"
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.GameManagerService.RF.SpawnPlayer
+            a3:InvokeServer(a0, a1)
+        end
+    )
+    L:NewButton(
+        "Switch to citizen",
+        "Switch to citizen",
+        function()
+            local a0 = "Citizen"
+            local a1 = false
+            local a3 =
+                game:GetService("ReplicatedStorage").Packages["_Index"]["sleitnick_knit@1.4.7"].knit.Services.GameManagerService.RF.SpawnPlayer
+            a3:InvokeServer(a0, a1)
+        end
+    )
+    M:NewButton(
+        "Gun Dealer",
+        "",
+        function()
+            game.Players.LocalPlayer.PlayerScripts.MadonoxLocal.Gui.GunDealerClient.Update:Fire("isDealer", true)
+            game.ReplicatedStorage.MadonoxReplicated.GunDealer.UpdateAvatar:FireServer(true)
+        end
+    )
+    N:NewKeybind(
+        "Toggle UI",
+        "Enable/Disable UI keybind.",
+        Enum.KeyCode.RightShift,
+        function()
+            a:ToggleUI()
+        end
+    )
+elseif game.PlaceId == 8906378074 then
+    local a = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+    local b = a.CreateLib("Grub Hub", "Midnight")
+    local c = b:NewTab("Home")
+    local aN = b:NewTab("Weapon Mods")
+    local aO = b:NewTab("LocalPlayer")
+    local aP = b:NewTab("Teleport")
+    local aQ = b:NewTab("settings")
+    local aR = b:NewTab("Credits")
+    local aS = c:NewSection("Home")
+    local aT = aN:NewSection("Gun Mods")
+    local aU = aO:NewSection("LocalPlayer")
+    local aV = aO:NewSection("Change Body")
+    local aW = aO:NewSection("Switch Teams")
+    local aX = aO:NewSection("OtherStuff")
+    local aY = aP:NewSection("Teleport")
+    local aZ = aP:NewSection("Health-Station")
+    local a_ = aP:NewSection("Armor-Station")
+    local b0 = aP:NewSection("Rations-Station")
+    local b1 = aP:NewSection("Jobs")
+    local b2 = aP:NewSection("Shop")
+    local b3 = aQ:NewSection("settings")
+    local b4 = aR:NewSection("Credits")
+    aT:NewButton(
+        "No bullet range",
+        "",
+        function()
+            for Y, Z in next, getgc(true) do
+                if type(Z) == "table" and rawget(Z, "GunData") then
+                    Z.Distance = math.huge
+                end
+            end
+        end
+    )
+    aT:NewButton(
+        "No shooting cooldown",
+        "No shooting cooldown.",
+        function()
+            for Y, Z in next, getgc(true) do
+                if type(Z) == "table" and rawget(Z, "Ammo") then
+                    Z.FireRate = math.huge
+                end
+            end
+        end
+    )
+    aT:NewButton(
+        "Auto shoot",
+        "Will shoot automatically.",
+        function()
+            for Y, Z in next, getgc(true) do
+                if type(Z) == "table" and rawget(Z, "Ammo") then
+                    Z.FireType = "Auto"
+                end
+            end
+        end
+    )
+    b4:NewButton(
+        "SpaceMan#3664",
+        "Will copy my discord account",
+        function()
+            setclipboard("SpaceMan#3664")
+        end
+    )
+    b4:NewButton(
+        ".gg/nR9VsD34Pz",
+        "Will copy my discord server",
+        function()
+            setclipboard("https://discord.gg/nR9VsD34Pz")
+        end
+    )
+    b3:NewKeybind(
+        "Toggle UI",
+        "Press RightShift To Toggle UI",
+        Enum.KeyCode.RightShift,
+        function()
+            a:ToggleUI()
+        end
+    )
+    aU:NewSlider(
+        "Change WalkSpeed",
+        "Changes your WalkSpeed",
+        500,
+        10,
+        function(a4)
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = a4
+        end
+    )
+    aU:NewSlider(
+        "Change JumpPower",
+        "Changes your JumpPower",
+        500,
+        20,
+        function(a4)
+            game.Players.LocalPlayer.Character.Humanoid.JumpPower = a4
+        end
+    )
+    aU:NewButton(
+        "Enable reset button",
+        ".",
+        function()
+            game:GetService("StarterGui"):SetCore("ResetButtonCallback", true)
+        end
+    )
+    aV:NewButton(
+        "Remove face",
+        "Will remove your face",
+        function()
+            game.Players.LocalPlayer.Character.Head.face:Destroy()
+        end
+    )
+    aV:NewButton(
+        "Remove Left Arm",
+        "Will remove your left arm",
+        function()
+            game.Players.LocalPlayer.Character.LeftUpperArm:Destroy()
+        end
+    )
+    aV:NewButton(
+        "Remove Right Arm",
+        "Will remove your right arm",
+        function()
+            game.Players.LocalPlayer.Character.RightUpperArm:Destroy()
+        end
+    )
+    aV:NewButton(
+        "Remove head",
+        "Will remove your head.",
+        function()
+            game.Players.LocalPlayer.Character.Head.Weld:Destroy()
+        end
+    )
+    aW:NewButton(
+        "Switch to Citizen",
+        "Changed to Citizen",
+        function()
+            local a0 = "Citizen"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.changeTeam
+            a3:InvokeServer(a0)
+            wait(0.1)
+            local a3 = game:GetService("ReplicatedStorage").Remotes.getTeamType
+            a3:InvokeServer()
+            wait(0.1)
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Spawn
+            a3:FireServer()
+        end
+    )
+    aW:NewButton(
+        "Switch to Rebel",
+        "Changed to Rebel",
+        function()
+            local a0 = "Rebel"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.changeTeam
+            a3:InvokeServer(a0)
+            wait(0.1)
+            local a3 = game:GetService("ReplicatedStorage").Remotes.getTeamType
+            a3:InvokeServer()
+            wait(0.1)
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Spawn
+            a3:FireServer()
+        end
+    )
+    aW:NewButton(
+        "Switch to Combine",
+        "Changed to Combine",
+        function()
+            local a0 = "Combine"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.changeTeam
+            a3:InvokeServer(a0)
+            wait(0.1)
+            local a3 = game:GetService("ReplicatedStorage").Remotes.getTeamType
+            a3:InvokeServer()
+            wait(0.1)
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Spawn
+            a3:FireServer()
+        end
+    )
+    aX:NewButton(
+        "Crab Hitbox Expander",
+        "Change HeadcrabAIs Hitbox",
+        function()
+            local b5 = 50
+            local b6 = 0.5
+            for Y, Z in pairs(game:GetService("Workspace"):GetChildren()) do
+                if Z.Name == "Headcrab_AI" then
+                    local b7 = Z.HumanoidRootPart
+                    b7.Transparency = b6
+                    b7.Size = Vector3.new(b5, b5, b5)
+                end
+            end
+        end
+    )
+    aY:NewButton(
+        "Bridge",
+        "Teleport to the Bridge!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-397.257874, 36.115799, -498.011261)
+        end
+    )
+    aY:NewButton(
+        "Combine Spawn",
+        "Teleport to the Combine Spawn!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-494.5578, -31.734005, -243.505844)
+        end
+    )
+    aY:NewButton(
+        "Rebel Spawn",
+        "Teleport to the Rebel Spawn!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-764.996033, -71.3841553, -699.057556)
+        end
+    )
+    aY:NewButton(
+        "City",
+        "Teleport to the City Center!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-534.789307, -51.6977539, -738.658203)
+        end
+    )
+    aY:NewButton(
+        "Outlands",
+        "Teleport to the Outlands",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-690.452393, -45.2679825, 496.475128)
+        end
+    )
+    aY:NewButton(
+        "Factory",
+        "Teleport to the Factory",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-269.62637329102, -50.240558624268, -1029.9099121094)
+        end
+    )
+    aZ:NewButton(
+        "Health 1",
+        "Go to a Health Station!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-510.412994, -51.3841553, -491.179718)
+        end
+    )
+    aZ:NewButton(
+        "Health 2",
+        "Go to a Health Station!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-553.583557, -71.3841553, -542.784729)
+        end
+    )
+    aZ:NewButton(
+        "Health 3",
+        "Go to a Health Station!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-328.888031, -51.3841553, -489.575745)
+        end
+    )
+    aZ:NewButton(
+        "Health 4",
+        "Go to a Health Station!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-404.944092, -51.3841553, -755.828735)
+        end
+    )
+    aZ:NewButton(
+        "Health 5",
+        "Go to a Health Station!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-476.510834, -31.9841614, -271.321106)
+        end
+    )
+    a_:NewButton(
+        "Armor 1",
+        "Go to a Armor Station!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-414.506683, -51.3841553, -531.945679)
+        end
+    )
+    a_:NewButton(
+        "Armor 2",
+        "Go to a Armor Station!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-577.872375, -31.3852539, -844.959656)
+        end
+    )
+    a_:NewButton(
+        "Armor 3",
+        "Go to a Armor Station!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-454.729431, -52.6341553, -795.879639)
+        end
+    )
+    a_:NewButton(
+        "Armor 4",
+        "Go to a Armor Station!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-404.944092, -51.3841553, -755.828735)
+        end
+    )
+    a_:NewButton(
+        "Armor 5",
+        "Go to a Armor Station!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-513.871094, -32.1739197, -235.803604)
+        end
+    )
+    b0:NewButton(
+        "Rations 1",
+        "Go to a Rations Station!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-681.533875, -51.3691597, -560.763489)
+        end
+    )
+    b0:NewButton(
+        "Rations 2",
+        "Go to a Rations Station!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-489.739624, -51.3841553, -455.14978)
+        end
+    )
+    b0:NewButton(
+        "Rations 3",
+        "Go to a Rations Station!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-450.277802, -52.6341553, -759.400757)
+        end
+    )
+    b0:NewButton(
+        "Rations 4",
+        "Go to a Rations Station!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-372.245148, -48.8841553, -611.116272)
+        end
+    )
+    b1:NewButton(
+        "TP to Jack!",
+        "Get a job!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-389.508698, -51.3841553, -486.14743)
+        end
+    )
+    b1:NewButton(
+        "TP to James",
+        "Get a job!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-593.345154, -49.2032051, 209.242447)
+        end
+    )
+    b1:NewButton(
+        "TP to Niguel",
+        "Get a job!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-387.919983, -51.3841553, -795.750732)
+        end
+    )
+    b1:NewButton(
+        "TP to Kai",
+        "Get a job!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-288.58313, -11.3841543, -647.877747)
+        end
+    )
+    b2:NewButton(
+        "TP to Rebel Shop 1",
+        "Buy something!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-544.54382324219, -71.384155273438, -582.58905029297)
+        end
+    )
+    b2:NewButton(
+        "TP to Rebel Shop 2",
+        "Buy something!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-464.10748291016, -31.384155273438, -647.67279052734)
+        end
+    )
+    b2:NewButton(
+        "TP to Rebel Shop 3",
+        "Buy something!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-539.60534667969, -71.384155273438, -656.83654785156)
+        end
+    )
+    b2:NewButton(
+        "TP to Combine Shop",
+        "Buy something!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-484.72076416016, -31.734004974365, -244.6448059082)
+        end
+    )
+elseif game.PlaceId == 5834211079 then
+    local a = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+    local b = a.CreateLib("Grub Hub", "Midnight")
+    local c = b:NewTab("Home")
+    local aN = b:NewTab("Weapon Mods")
+    local aO = b:NewTab("LocalPlayer")
+    local aP = b:NewTab("Teleport")
+    local aQ = b:NewTab("settings")
+    local aR = b:NewTab("Credits")
+    local aS = c:NewSection("Home")
+    local aT = aN:NewSection("Gun Mods")
+    local aU = aO:NewSection("LocalPlayer")
+    local aV = aO:NewSection("Change Body")
+    local aW = aO:NewSection("Switch Teams")
+    local aX = aO:NewSection("OtherStuff")
+    local aY = aP:NewSection("Teleport")
+    local aZ = aP:NewSection("Health-Station")
+    local a_ = aP:NewSection("Armor-Station")
+    local b0 = aP:NewSection("Rations-Station")
+    local b1 = aP:NewSection("Jobs")
+    local b2 = aP:NewSection("Shop")
+    local b3 = aQ:NewSection("settings")
+    local b4 = aR:NewSection("Credits")
+    aT:NewButton(
+        "INF Ammo",
+        "Will give you inf ammo.",
+        function()
+            for aG, Z in pairs(getgc(true)) do
+                if typeof(Z) == "table" and rawget(Z, "Recoil") and typeof(rawget(Z, "Recoil")) == "function" then
+                    rawset(
+                        Z,
+                        "Recoil",
+                        function()
+                        end
+                    )
+                    local b8 = rawget(Z, "Shoot")
+                    local b9 = debug.getupvalue(b8, 2)
+                    for aG, Z in pairs(b9) do
+                        if typeof(Z) == "table" and rawget(Z, "Ammo") then
+                            rawset(Z, "MaxAmmo", math.huge)
+                            rawset(Z, "Ammo", math.huge)
+                        end
+                    end
+                end
+            end
+        end
+    )
+    aT:NewButton(
+        "No shooting cooldown",
+        "No shooting cooldown.",
+        function()
+            for aG, Z in pairs(getgc(true)) do
+                if typeof(Z) == "table" and rawget(Z, "Recoil") and typeof(rawget(Z, "Recoil")) == "function" then
+                    rawset(
+                        Z,
+                        "Recoil",
+                        function()
+                        end
+                    )
+                    local b8 = rawget(Z, "Shoot")
+                    local b9 = debug.getupvalue(b8, 2)
+                    for aG, Z in pairs(b9) do
+                        if typeof(Z) == "table" and rawget(Z, "Ammo") then
+                            rawset(Z, "RPM", math.huge)
+                        end
+                    end
+                end
+            end
+        end
+    )
+    aT:NewButton(
+        "Auto shoot",
+        "Will shoot automatically.",
+        function()
+            for aG, Z in pairs(getgc(true)) do
+                if typeof(Z) == "table" and rawget(Z, "Recoil") and typeof(rawget(Z, "Recoil")) == "function" then
+                    rawset(
+                        Z,
+                        "Recoil",
+                        function()
+                        end
+                    )
+                    local b8 = rawget(Z, "Shoot")
+                    local b9 = debug.getupvalue(b8, 2)
+                    for aG, Z in pairs(b9) do
+                        if typeof(Z) == "table" and rawget(Z, "Ammo") then
+                            rawset(Z, "FiringType", "Auto")
+                        end
+                    end
+                end
+            end
+        end
+    )
+    b4:NewButton(
+        "SpaceMan#3664",
+        "Will copy my discord account",
+        function()
+            setclipboard("SpaceMan#3664")
+        end
+    )
+    b4:NewButton(
+        ".gg/nR9VsD34Pz",
+        "Will copy my discord server",
+        function()
+            setclipboard("https://discord.gg/nR9VsD34Pz")
+        end
+    )
+    b3:NewKeybind(
+        "Toggle UI",
+        "Press RightShift To Toggle UI",
+        Enum.KeyCode.RightShift,
+        function()
+            a:ToggleUI()
+        end
+    )
+    aU:NewSlider(
+        "Change WalkSpeed",
+        "Changes your WalkSpeed",
+        500,
+        10,
+        function(a4)
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = a4
+        end
+    )
+    aU:NewSlider(
+        "Change JumpPower",
+        "Changes your JumpPower",
+        500,
+        20,
+        function(a4)
+            game.Players.LocalPlayer.Character.Humanoid.JumpPower = a4
+        end
+    )
+    aU:NewButton(
+        "Respawn",
+        "die",
+        function()
+            local _ = game:GetService("Workspace").Killzones.Killzone10.TouchInterest
+            local aL = game.Players.LocalPlayer.Character.HumanoidRootPart
+            firetouchinterest(aL, _.Parent, 0)
+        end
+    )
+    aV:NewButton(
+        "Remove face",
+        "Will remove your face",
+        function()
+            game.Players.LocalPlayer.Character.Head.face:Destroy()
+        end
+    )
+    aV:NewButton(
+        "Remove Left Arm",
+        "Will remove your left arm",
+        function()
+            game.Players.LocalPlayer.Character.LeftUpperArm:Destroy()
+        end
+    )
+    aV:NewButton(
+        "Remove Right Arm",
+        "Will remove your right arm",
+        function()
+            game.Players.LocalPlayer.Character.RightUpperArm:Destroy()
+        end
+    )
+    aV:NewButton(
+        "Remove head",
+        "Will remove your head.",
+        function()
+            game.Players.LocalPlayer.Character.Head.Weld:Destroy()
+        end
+    )
+    aW:NewButton(
+        "Switch to Citizen",
+        "Changed to Citizen",
+        function()
+            local a0 = "Citizen"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.changeTeam
+            a3:InvokeServer(a0)
+            wait(0.1)
+            local a3 = game:GetService("ReplicatedStorage").Remotes.getTeamType
+            a3:InvokeServer()
+            wait(0.1)
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Spawn
+            a3:FireServer()
+        end
+    )
+    aW:NewButton(
+        "Switch to Rebel",
+        "Changed to Rebel",
+        function()
+            local a0 = "Rebel"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.changeTeam
+            a3:InvokeServer(a0)
+            wait(0.1)
+            local a3 = game:GetService("ReplicatedStorage").Remotes.getTeamType
+            a3:InvokeServer()
+            wait(0.1)
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Spawn
+            a3:FireServer()
+        end
+    )
+    aW:NewButton(
+        "Switch to Combine",
+        "Changed to Combine",
+        function()
+            local a0 = "Combine"
+            local a3 = game:GetService("ReplicatedStorage").Remotes.changeTeam
+            a3:InvokeServer(a0)
+            wait(0.1)
+            local a3 = game:GetService("ReplicatedStorage").Remotes.getTeamType
+            a3:InvokeServer()
+            wait(0.1)
+            local a3 = game:GetService("ReplicatedStorage").Remotes.Spawn
+            a3:FireServer()
+        end
+    )
+    aX:NewButton(
+        "Crab Hitbox Expander",
+        "Change HeadcrabAIs Hitbox",
+        function()
+            local b5 = 50
+            local b6 = 0.5
+            for Y, Z in pairs(game:GetService("Workspace"):GetChildren()) do
+                if Z.Name == "Headcrab_AI" then
+                    local b7 = Z.HumanoidRootPart
+                    b7.Transparency = b6
+                    b7.Size = Vector3.new(b5, b5, b5)
+                end
+            end
+        end
+    )
+    aY:NewButton(
+        "Bridge",
+        "Teleport to the Bridge!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-397.257874, 36.115799, -498.011261)
+        end
+    )
+    aY:NewButton(
+        "Combine Spawn",
+        "Teleport to the Combine Spawn!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-494.5578, -31.734005, -243.505844)
+        end
+    )
+    aY:NewButton(
+        "Rebel Spawn",
+        "Teleport to the Rebel Spawn!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-764.996033, -71.3841553, -699.057556)
+        end
+    )
+    aY:NewButton(
+        "City",
+        "Teleport to the City Center!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-534.789307, -51.6977539, -738.658203)
+        end
+    )
+    aY:NewButton(
+        "Outlands",
+        "Teleport to the Outlands",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-690.452393, -45.2679825, 496.475128)
+        end
+    )
+    aY:NewButton(
+        "Factory",
+        "Teleport to the Factory",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-269.62637329102, -50.240558624268, -1029.9099121094)
+        end
+    )
+    aZ:NewButton(
+        "Health 1",
+        "Go to a Health Station!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-510.412994, -51.3841553, -491.179718)
+        end
+    )
+    aZ:NewButton(
+        "Health 2",
+        "Go to a Health Station!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-553.583557, -71.3841553, -542.784729)
+        end
+    )
+    aZ:NewButton(
+        "Health 3",
+        "Go to a Health Station!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-328.888031, -51.3841553, -489.575745)
+        end
+    )
+    aZ:NewButton(
+        "Health 4",
+        "Go to a Health Station!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-404.944092, -51.3841553, -755.828735)
+        end
+    )
+    aZ:NewButton(
+        "Health 5",
+        "Go to a Health Station!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-476.510834, -31.9841614, -271.321106)
+        end
+    )
+    a_:NewButton(
+        "Armor 1",
+        "Go to a Armor Station!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-414.506683, -51.3841553, -531.945679)
+        end
+    )
+    a_:NewButton(
+        "Armor 2",
+        "Go to a Armor Station!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-577.872375, -31.3852539, -844.959656)
+        end
+    )
+    a_:NewButton(
+        "Armor 3",
+        "Go to a Armor Station!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-454.729431, -52.6341553, -795.879639)
+        end
+    )
+    a_:NewButton(
+        "Armor 4",
+        "Go to a Armor Station!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-404.944092, -51.3841553, -755.828735)
+        end
+    )
+    a_:NewButton(
+        "Armor 5",
+        "Go to a Armor Station!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-513.871094, -32.1739197, -235.803604)
+        end
+    )
+    b0:NewButton(
+        "Rations 1",
+        "Go to a Rations Station!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-681.533875, -51.3691597, -560.763489)
+        end
+    )
+    b0:NewButton(
+        "Rations 2",
+        "Go to a Rations Station!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-489.739624, -51.3841553, -455.14978)
+        end
+    )
+    b0:NewButton(
+        "Rations 3",
+        "Go to a Rations Station!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-450.277802, -52.6341553, -759.400757)
+        end
+    )
+    b0:NewButton(
+        "Rations 4",
+        "Go to a Rations Station!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-372.245148, -48.8841553, -611.116272)
+        end
+    )
+    b1:NewButton(
+        "TP to Jack!",
+        "Get a job!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-389.508698, -51.3841553, -486.14743)
+        end
+    )
+    b1:NewButton(
+        "TP to James",
+        "Get a job!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-593.345154, -49.2032051, 209.242447)
+        end
+    )
+    b1:NewButton(
+        "TP to Niguel",
+        "Get a job!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-387.919983, -51.3841553, -795.750732)
+        end
+    )
+    b1:NewButton(
+        "TP to Kai",
+        "Get a job!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-288.58313, -11.3841543, -647.877747)
+        end
+    )
+    b2:NewButton(
+        "TP to Rebel Shop 1",
+        "Buy something!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-544.54382324219, -71.384155273438, -582.58905029297)
+        end
+    )
+    b2:NewButton(
+        "TP to Rebel Shop 2",
+        "Buy something!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-464.10748291016, -31.384155273438, -647.67279052734)
+        end
+    )
+    b2:NewButton(
+        "TP to Rebel Shop 3",
+        "Buy something!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-539.60534667969, -71.384155273438, -656.83654785156)
+        end
+    )
+    b2:NewButton(
+        "TP to Combine Shop",
+        "Buy something!",
+        function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                CFrame.new(-484.72076416016, -31.734004974365, -244.6448059082)
+        end
+    )
+elseif game.PlaceId == 3226555017 then
+    local a = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+    local b = a.CreateLib("Grub Hub - Scp Site Roleplay", "Midnight")
+    local ba = b:NewTab("Character")
+    local bb = b:NewTab("Misc")
+    local bc = b:NewTab("Gun Mods")
+    local bd = b:NewTab("Items")
+    local be = b:NewTab("Teams")
+    local bf = b:NewTab("Trolling")
+    local bg = b:NewTab("Teleports")
+    local bh = ba:NewSection("Character Stuff")
+    local bi = bb:NewSection("Misc Stuff")
+    local bj = bc:NewSection("Gun Mods")
+    local bk = bd:NewSection("Free Items")
+    local bl = be:NewSection("Switch Teams")
+    local bm = bf:NewSection("Coming soon")
+    local bn = bg:NewSection("Coming soon")
+    bh:NewButton(
+        "INF Stamina",
+        "ButtonInfo",
+        function()
+            local bo = getrawmetatable(game)
+            make_writeable(bo)
+            local bp = bo.__index
+            bo.__index = function(_, aL)
+                if tostring(_) == "Stamina" then
+                    if tostring(aL) == "Value" then
+                        return 999999999
+                    end
+                end
+                return bp(_, aL)
+            end
+            local bo = getrawmetatable(game)
+            make_writeable(bo)
+            local bp = bo.__index
+            bo.__index = function(_, aL)
+                if tostring(_) == "MaxStamina" then
+                    if tostring(aL) == "Value" then
+                        return 999999999
+                    end
+                end
+                return bp(_, aL)
+            end
+        end
+    )
+    bh:NewButton(
+        "No Jump Cooldown",
+        "Jump Faster",
+        function()
+            game.Players.LocalPlayer.Character.JumpDebounce:Destroy()
+        end
+    )
+    bh:NewButton(
+        "[NOT CLASS D] Explode Yourself",
+        "Only works if the purple lines are not destroyed.",
+        function()
+            firetouchinterest(
+                game.Players.LocalPlayer.Character.HumanoidRootPart,
+                game:GetService("Workspace").Packages["BI_touchtrig"].Part,
+                0
+            )
+        end
+    )
+    bh:NewButton(
+        "Fast Respawn",
+        "Instant Respawn",
+        function()
+            local a0 = 2
+            local a3 = game:GetService("ReplicatedStorage").Died
+            a3:FireServer(a0)
+        end
+    )
+    bi:NewToggle(
+        "Remove Name",
+        "hide your name",
+        function(aH)
+            if aH then
+                getgenv(1).Toggle = true
+                local bq = game.Players.LocalPlayer.Character.Head
+                bq.Overhead:Destroy()
+                game.Players.LocalPlayer.Character.Died:Connect(
+                    function()
+                        if getgenv(1).Toggle == true then
+                            wait(.1)
+                            local bq = game.Players.LocalPlayer.Character.Head
+                            bq.Overhead:Destroy()
+                        end
+                    end
+                )
+                while getgenv(1).Toggle == true do
+                    wait(.1)
+                    local bq = game.Players.LocalPlayer.Character.Head
+                    bq.Overhead:Destroy()
+                end
+            else
+                getgenv(1).Toggle = false
+            end
+        end
+    )
+    bi:NewToggle(
+        "Remove Face",
+        "hide your face",
+        function(aH)
+            if aH then
+                getgenv(1).Toggle = true
+                while Toggle == true do
+                    wait(.1)
+                    local bq = game.Players.LocalPlayer.Character.Head
+                    bq.face:Destroy()
+                end
+            else
+                getgenv(1).Toggle = false
+            end
+        end
+    )
+    bi:NewToggle(
+        "AutoRun",
+        "Run Automatic",
+        function(aH)
+            if aH then
+                getgenv(1).Toggle = true
+                while Toggle == true do
+                    wait(.1)
+                    game.Players.LocalPlayer.Character.Run.Running.Value = true
+                end
+            else
+                getgenv(1).Toggle = false
+            end
+        end
+    )
+    bi:NewButton(
+        "No MaxZoomDistance",
+        "Look further",
+        function()
+            game.Players.LocalPlayer.CameraMaxZoomDistance = 100000
+        end
+    )
+    bi:NewButton(
+        "No MaxZoomDistance",
+        "Look further",
+        function()
+            game:GetService("Workspace").InteriorBuild.TeslaGates:Destroy()
+        end
+    )
+    bi:NewButton(
+        "Fullbright",
+        "Click Again to disable",
+        function()
+            if not _G.FullBrightExecuted then
+                _G.FullBrightEnabled = false
+                _G.NormalLightingSettings = {
+                    Brightness = game:GetService("Lighting").Brightness,
+                    ClockTime = game:GetService("Lighting").ClockTime,
+                    FogEnd = game:GetService("Lighting").FogEnd,
+                    GlobalShadows = game:GetService("Lighting").GlobalShadows,
+                    Ambient = game:GetService("Lighting").Ambient
+                }
+                game:GetService("Lighting"):GetPropertyChangedSignal("Brightness"):Connect(
+                    function()
+                        if
+                            game:GetService("Lighting").Brightness ~= 1 and
+                                game:GetService("Lighting").Brightness ~= _G.NormalLightingSettings.Brightness
+                         then
+                            _G.NormalLightingSettings.Brightness = game:GetService("Lighting").Brightness
+                            if not _G.FullBrightEnabled then
+                                repeat
+                                    wait()
+                                until _G.FullBrightEnabled
+                            end
+                            game:GetService("Lighting").Brightness = 1
+                        end
+                    end
+                )
+                game:GetService("Lighting"):GetPropertyChangedSignal("ClockTime"):Connect(
+                    function()
+                        if
+                            game:GetService("Lighting").ClockTime ~= 12 and
+                                game:GetService("Lighting").ClockTime ~= _G.NormalLightingSettings.ClockTime
+                         then
+                            _G.NormalLightingSettings.ClockTime = game:GetService("Lighting").ClockTime
+                            if not _G.FullBrightEnabled then
+                                repeat
+                                    wait()
+                                until _G.FullBrightEnabled
+                            end
+                            game:GetService("Lighting").ClockTime = 12
+                        end
+                    end
+                )
+                game:GetService("Lighting"):GetPropertyChangedSignal("FogEnd"):Connect(
+                    function()
+                        if
+                            game:GetService("Lighting").FogEnd ~= 786543 and
+                                game:GetService("Lighting").FogEnd ~= _G.NormalLightingSettings.FogEnd
+                         then
+                            _G.NormalLightingSettings.FogEnd = game:GetService("Lighting").FogEnd
+                            if not _G.FullBrightEnabled then
+                                repeat
+                                    wait()
+                                until _G.FullBrightEnabled
+                            end
+                            game:GetService("Lighting").FogEnd = 786543
+                        end
+                    end
+                )
+                game:GetService("Lighting"):GetPropertyChangedSignal("GlobalShadows"):Connect(
+                    function()
+                        if
+                            game:GetService("Lighting").GlobalShadows ~= false and
+                                game:GetService("Lighting").GlobalShadows ~= _G.NormalLightingSettings.GlobalShadows
+                         then
+                            _G.NormalLightingSettings.GlobalShadows = game:GetService("Lighting").GlobalShadows
+                            if not _G.FullBrightEnabled then
+                                repeat
+                                    wait()
+                                until _G.FullBrightEnabled
+                            end
+                            game:GetService("Lighting").GlobalShadows = false
+                        end
+                    end
+                )
+                game:GetService("Lighting"):GetPropertyChangedSignal("Ambient"):Connect(
+                    function()
+                        if
+                            game:GetService("Lighting").Ambient ~= Color3.fromRGB(178, 178, 178) and
+                                game:GetService("Lighting").Ambient ~= _G.NormalLightingSettings.Ambient
+                         then
+                            _G.NormalLightingSettings.Ambient = game:GetService("Lighting").Ambient
+                            if not _G.FullBrightEnabled then
+                                repeat
+                                    wait()
+                                until _G.FullBrightEnabled
+                            end
+                            game:GetService("Lighting").Ambient = Color3.fromRGB(178, 178, 178)
+                        end
+                    end
+                )
+                game:GetService("Lighting").Brightness = 1
+                game:GetService("Lighting").ClockTime = 12
+                game:GetService("Lighting").FogEnd = 786543
+                game:GetService("Lighting").GlobalShadows = false
+                game:GetService("Lighting").Ambient = Color3.fromRGB(178, 178, 178)
+                local ac = true
+                spawn(
+                    function()
+                        repeat
+                            wait()
+                        until _G.FullBrightEnabled
+                        while wait() do
+                            if _G.FullBrightEnabled ~= ac then
+                                if not _G.FullBrightEnabled then
+                                    game:GetService("Lighting").Brightness = _G.NormalLightingSettings.Brightness
+                                    game:GetService("Lighting").ClockTime = _G.NormalLightingSettings.ClockTime
+                                    game:GetService("Lighting").FogEnd = _G.NormalLightingSettings.FogEnd
+                                    game:GetService("Lighting").GlobalShadows = _G.NormalLightingSettings.GlobalShadows
+                                    game:GetService("Lighting").Ambient = _G.NormalLightingSettings.Ambient
+                                else
+                                    game:GetService("Lighting").Brightness = 1
+                                    game:GetService("Lighting").ClockTime = 12
+                                    game:GetService("Lighting").FogEnd = 786543
+                                    game:GetService("Lighting").GlobalShadows = false
+                                    game:GetService("Lighting").Ambient = Color3.fromRGB(178, 178, 178)
+                                end
+                                ac = not ac
+                            end
+                        end
+                    end
+                )
+            end
+            _G.FullBrightExecuted = true
+            _G.FullBrightEnabled = not _G.FullBrightEnabled
+        end
+    )
+    bi:NewButton(
+        "Destroy Purple Lines",
+        "Destroy SCP purple lines",
+        function()
+            for Y, Z in pairs(game:GetService("Workspace").Packages:GetChildren()) do
+                if Z.Name == "BI_touchtrig" then
+                    Z:Destroy()
+                end
+            end
+        end
+    )
+    bj:NewButton(
+        "No FireRate",
+        "Shoot Faster",
+        function()
+            for Y, Z in pairs(getgc(true)) do
+                if typeof(Z) == "table" and rawget(Z, "Recoil") then
+                    rawset(Z, "RateOfFire", 9999999999)
+                end
+            end
+        end
+    )
+    bj:NewButton(
+        "No Recoil",
+        "No recoil",
+        function()
+            for Y, Z in pairs(getgc(true)) do
+                if typeof(Z) == "table" and rawget(Z, "Recoil") then
+                    rawset(Z, "Recoil", 0)
+                    rawset(Z, "AimRecoil", 0)
+                end
+            end
+        end
+    )
+    bj:NewButton(
+        "INF Ammo",
+        "More BULLETS!",
+        function()
+            for Y, Z in pairs(getgc(true)) do
+                if typeof(Z) == "table" and rawget(Z, "Recoil") then
+                    rawset(Z, "MagSize", math.huge)
+                end
+            end
+        end
+    )
+    bj:NewButton(
+        "Bullet Range",
+        "Shoot bullets further",
+        function()
+            for Y, Z in pairs(getgc(true)) do
+                if typeof(Z) == "table" and rawget(Z, "Recoil") then
+                    rawset(Z, "Range", 10000000)
+                end
+            end
+        end
+    )
+    bj:NewButton(
+        "Auto Shoot",
+        "Shoot Automatic",
+        function()
+            for Y, Z in pairs(getgc(true)) do
+                if typeof(Z) == "table" and rawget(Z, "Recoil") then
+                    rawset(Z, "Mode", "Auto")
+                end
+            end
+        end
+    )
+    bj:NewButton(
+        "Bullet Damage",
+        "1shot 1 kill",
+        function()
+            for Y, Z in pairs(getgc(true)) do
+                if typeof(Z) == "table" and rawget(Z, "Recoil") then
+                    rawset(Z, "Damage", 250)
+                    rawset(Z, "HeadMulti", 250)
+                end
+            end
+        end
+    )
+    bj:NewButton(
+        "AimSensivity",
+        "Change AimSensivity",
+        function()
+            for Y, Z in pairs(getgc(true)) do
+                if typeof(Z) == "table" and rawget(Z, "AimSensivity") then
+                    rawset(Z, "AimSensivity", 1.5)
+                end
+            end
+        end
+    )
+    bj:NewButton(
+        "AimWalkSpeed",
+        "Change AimWalkSpeed",
+        function()
+            for Y, Z in pairs(getgc(true)) do
+                if typeof(Z) == "table" and rawget(Z, "AimWalkSpeed") then
+                    rawset(Z, "AimWalkSpeed", 19)
+                end
+            end
+        end
+    )
+    bk:NewButton(
+        "[CLASS D] Get Crowbar",
+        "Get a Crowbar",
+        function()
+            fireclickdetector(game:GetService("Workspace").InteriorBuild.Interactables.GetCrowbar.ClickDetector)
+        end
+    )
+    bk:NewButton(
+        "Get Blowtorch",
+        "Get a Blowtorch",
+        function()
+            fireclickdetector(game:GetService("Workspace").InteriorBuild.Interactables.GetBlowtorch.ClickDetector)
+        end
+    )
+    bk:NewButton(
+        "[CLASS D] Get Vent Map",
+        "Get a vent map",
+        function()
+            fireclickdetector(game:GetService("Workspace").InteriorBuild.Interactables.MapGiver.ClickDetector)
+        end
+    )
+    bk:NewButton(
+        "Get Teddy",
+        "Get a Teddy",
+        function()
+            fireclickdetector(game:GetService("Workspace").InteriorBuild.Interactables.Teddy.Part.ClickDetector)
+        end
+    )
+    bk:NewButton(
+        "INF Crowbar uses",
+        "Use it more often",
+        function()
+            game.Players.LocalPlayer.Backpack.Crowbar.U.Value = math.huge
+        end
+    )
+    bl:NewButton(
+        "Swtich to Class-D",
+        "D",
+        function()
+            local a0 = "CD"
+            local a3 = game:GetService("ReplicatedStorage").Team
+            a3:FireServer(a0)
+        end
+    )
+    bl:NewButton(
+        "Switch to MobileTaskForce",
+        "MTF",
+        function()
+            local a0 = "mainmenu2"
+            local a1 = "MTF"
+            local a3 = game:GetService("ReplicatedStorage").Team
+            a3:FireServer(a0, a1)
+        end
+    )
+    bl:NewButton(
+        "Switch to Security",
+        "S",
+        function()
+            local a0 = "mainmenu2"
+            local a1 = "SD"
+            local a3 = game:GetService("ReplicatedStorage").Team
+            a3:FireServer(a0, a1)
+        end
+    )
+    bl:NewButton(
+        "Switch to Scientist",
+        "S",
+        function()
+            local a0 = "mainmenu2"
+            local a1 = "ScD"
+            local a3 = game:GetService("ReplicatedStorage").Team
+            a3:FireServer(a0, a1)
+        end
+    )
+end
